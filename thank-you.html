@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You | Lakut Kashmir</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#122620">
+  <link rel="icon" href="assets/img/icon-512.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .ty { min-height: 100svh; display: grid; place-items: center; position: relative; overflow: hidden; color: #fff; padding: 40px 16px; }
+    .ty__bg { position: absolute; inset: 0; }
+    .ty__bg img { width: 100%; height: 100%; object-fit: cover; animation: kenburns 14s ease-out forwards; }
+    .ty__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,26,20,.75), rgba(11,26,20,.92)); }
+    .ty canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .ty__card { position: relative; max-width: 620px; text-align: center; }
+    .ty__tick { width: 92px; height: 92px; margin: 0 auto 26px; border-radius: 50%; background: var(--leaf); display: grid; place-items: center; box-shadow: 0 0 0 12px rgba(27,114,53,.25); animation: pop .8s var(--ease); }
+    .ty__tick svg { width: 46px; height: 46px; color: #fff; }
+    .ty h1 { font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.6rem); }
+    .ty h1 em { color: var(--saffron); }
+    .ty p { color: rgba(255,255,255,.85); font-size: 1.1rem; margin-top: 16px; }
+    .ty__summary { margin: 26px auto 0; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 18px; padding: 16px 20px; text-align: left; display: grid; gap: 4px; font-size: .95rem; backdrop-filter: blur(8px); }
+    .ty__summary b { color: var(--saffron-l); }
+    .ty__ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
+    .ty__logo { display: inline-block; margin-bottom: 30px; }
+    .ty__logo img { height: 64px; width: auto; background: #fff; border-radius: 12px; padding: 4px 8px; }
+  </style>
+  <script src="assets/js/config.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.2-.7.2-1.3.2-1.5-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2A11.8 11.8 0 0 0 12 .1C5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.2 4.2L19 7"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/></symbol>
+  </svg>
+
+  <main class="ty">
+    <div class="ty__bg" aria-hidden="true"><img src="assets/img/srinagar-1.webp" alt="" width="1150" height="722"></div>
+    <canvas aria-hidden="true"></canvas>
+    <div class="ty__card">
+      <a class="ty__logo" href="index.html"><img src="assets/img/logo.webp" alt="Lakut Kashmir" width="160" height="120"></a>
+      <div class="ty__tick"><svg><use href="#i-check"/></svg></div>
+      <h1>Thank you<span data-name></span>! <em>Kashmir awaits.</em></h1>
+      <p data-msg>Our Kashmir expert will contact you on WhatsApp shortly with your day-wise plan, hotels and price.</p>
+      <div class="ty__summary" data-summary hidden></div>
+      <div class="ty__ctas">
+        <a class="btn btn--wa btn--lg" data-wa href="https://wa.me/919131990355" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> <span data-wa-label>Get a faster reply on WhatsApp</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://youtube.com/@lakutkashmir" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg> Watch guest videos</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/track.js"></script>
+  <script>
+    (function () {
+      var C = window.LAKUT || {};
+      var lead = null;
+      try { lead = JSON.parse(sessionStorage.getItem("lk_lead")); } catch (e) {}
+      var esc = function (s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; };
+
+      // Count the conversion once per lead (refreshing this page does not double count).
+      var counted = false;
+      try { counted = sessionStorage.getItem("lk_counted") === "1"; } catch (e) {}
+      if (lead && !counted) {
+        LK.track("generate_lead", { package: lead.package, travel_month: lead.month });
+        try { sessionStorage.setItem("lk_counted", "1"); } catch (e) {}
+      }
+
+      var text = "Hi Lakut Kashmir! I'd like a quote for a Kashmir trip.";
+      if (lead) {
+        document.querySelector("[data-name]").textContent = ", " + lead.name.split(" ")[0];
+        var box = document.querySelector("[data-summary]");
+        box.innerHTML = "<div><b>Package:</b> " + esc(lead.package) + "</div><div><b>Travel month:</b> " + esc(lead.month) + "</div><div><b>Travellers:</b> " + esc(lead.travellers) + "</div>";
+        box.hidden = false;
+        text = "Hi Lakut Kashmir! I just sent an enquiry.\nName: " + lead.name + "\nTravel month: " + lead.month + "\nTravellers: " + lead.travellers + "\nPackage: " + lead.package;
+      }
+      var waOpened = false;
+      try { waOpened = sessionStorage.getItem("lk_wa_opened") === "1"; } catch (e) {}
+      if (waOpened) {
+        document.querySelector("[data-msg]").textContent = "Your enquiry is ready in WhatsApp — just press send and our Kashmir expert will reply with your plan and price.";
+        document.querySelector("[data-wa-label]").textContent = "Open WhatsApp again";
+      }
+      var wa = document.querySelector("[data-wa]");
+      wa.href = "https://wa.me/" + (C.whatsapp || "919131990355") + "?text=" + encodeURIComponent(text);
+      wa.addEventListener("click", function () { LK.track("whatsapp_click", { location: "thank_you" }); });
+
+      // Confetti in brand colours
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var cv = document.querySelector(".ty canvas"), ctx = cv.getContext("2d");
+      var W = cv.width = innerWidth, H = cv.height = innerHeight;
+      var colors = ["#f58634", "#ffb27a", "#1b7235", "#02aff0", "#f5efe0"];
+      var bits = [];
+      for (var i = 0; i < 160; i++) bits.push({ x: W / 2, y: H * .38, vx: (Math.random() - .5) * 16, vy: Math.random() * -15 - 4, s: Math.random() * 7 + 4, r: Math.random() * 6, vr: (Math.random() - .5) * .3, c: colors[i % colors.length] });
+      var frames = 0;
+      (function tick() {
+        ctx.clearRect(0, 0, W, H);
+        bits.forEach(function (b) {
+          b.vy += .35; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+          ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r); ctx.fillStyle = b.c; ctx.fillRect(-b.s / 2, -b.s / 4, b.s, b.s / 2); ctx.restore();
+        });
+        if (++frames < 260) requestAnimationFrame(tick); else ctx.clearRect(0, 0, W, H);
+      })();
+    })();
+  </script>
+</body>
+</html>
