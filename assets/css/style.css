@@ -455,3 +455,42 @@ body.modal-open { overflow: hidden; }
   .rv-marquee { overflow-x: auto; }
   .anim [data-reveal] { opacity: 1; }
 }
+
+/* ---------- Phones: lead form on the first screen ---------- */
+/* Phones only (max-width: 760px). Desktop and tablet layouts are unchanged. */
+@media (max-width: 760px) {
+  .hero { padding-top: 80px; }
+
+  /* Let the headline, form and trust badges be ordered one by one. */
+  .hero__grid { display: flex; flex-direction: column; gap: 0; }
+  .hero__copy { display: contents; }
+
+  /* First screen: headline + price, then the form straight away. */
+  .hero .eyebrow { display: none; }
+  .hero__title { order: 1; font-size: clamp(1.7rem, 7.6vw, 2.2rem); }
+  #hero-form { order: 2; margin-top: 14px; padding: 16px; gap: 10px; border-radius: 20px; }
+  .hero__chips { order: 3; margin-top: 16px; gap: 8px; }
+  .hero__sub { order: 4; margin-top: 16px; font-size: .98rem; }
+  .hero__ctas { order: 5; margin-top: 18px; }
+
+  /* Compact form so name, phone, month, travellers and the button fit on screen. */
+  #hero-form .card-form__head p { display: none; }
+  #hero-form .card-form__head h2 { font-size: 1.3rem; }
+  #hero-form .badge-save { margin-bottom: 6px; font-size: .72rem; padding: 4px 10px; }
+  #hero-form .field { gap: 4px; font-size: .78rem; }
+  #hero-form .field input,
+  #hero-form .field select { padding: 11px 12px; } /* font stays 16px so iPhones don't zoom in */
+  #hero-form .form-note { font-size: .74rem; }
+
+  /* Show the first screen instantly: no intro animation hiding the headline or
+     the form, and no fading of the hero while the visitor scrolls to type. */
+  .hero__grid,
+  .hero__title .line > span,
+  .hero__sub,
+  .hero__chips li,
+  .hero__ctas .btn,
+  #hero-form,
+  #hero-form .field,
+  #hero-form .field-row,
+  #hero-form .btn { opacity: 1 !important; transform: none !important; }
+}
