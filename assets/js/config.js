@@ -8,7 +8,7 @@ window.LAKUT = {
   sheetUrl: "",
 
   // Contact numbers (digits only for WhatsApp, with country code).
-  whatsapp: "919131990355",
+  whatsapp: "919541589391",
   phone: "+919131990355",
   phoneDisplay: "+91 91319 90355",
 
