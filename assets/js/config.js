@@ -5,7 +5,7 @@
 window.LAKUT = {
   // Google Apps Script web-app URL that saves leads to a Google Sheet + emails you.
   // See google-apps-script/README.md. While empty, the form opens WhatsApp instead.
-  sheetUrl: "",
+  sheetUrl: "https://script.google.com/macros/s/AKfycbxJVol83ZQLP0yKupNHMmYbOpBq6fKW__kk4ny6ELiVHY_KeJcrV5Tlo0AAfYBivDae1A/exec",
 
   // Contact numbers (digits only for WhatsApp, with country code).
   whatsapp: "919541589391",
