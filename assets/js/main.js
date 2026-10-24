@@ -11,7 +11,7 @@
     get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
   };
-  var waNumber = (C.whatsapp || "919131990355").replace(/\D/g, "");
+  var waNumber = (C.whatsapp || "919541589391").replace(/\D/g, "");
   var waLink = function (text) { return "https://wa.me/" + waNumber + (text ? "?text=" + encodeURIComponent(text) : ""); };
 
   /* ---------- Config-driven content ---------- */
