@@ -232,7 +232,7 @@
       ss.set("lk_sent", "1");
       ss.set("lk_counted", "0");
       ss.set("lk_saved", "0");
-      ss.set("lk_lead", JSON.stringify({ name: lead.name, month: lead.month, travellers: lead.travellers, package: lead.package }));
+      ss.set("lk_lead", JSON.stringify({ name: lead.name, phone: lead.phone, month: lead.month, travellers: lead.travellers, package: lead.package }));
 
       // Bots fill the hidden field: pretend success, send nothing, count nothing.
       if (f.company && f.company.value) { location.href = "thank-you.html"; return; }
