@@ -62,10 +62,14 @@
       try { lead = JSON.parse(sessionStorage.getItem("lk_lead")); } catch (e) {}
       var esc = function (s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; };
 
-      // Count the conversion once per lead (refreshing this page does not double count).
+      var saved = false;
+      try { saved = sessionStorage.getItem("lk_saved") === "1"; } catch (e) {}
+
+      // Count the conversion once per lead, and only when the enquiry was actually saved
+      // (refreshing this page does not double count).
       var counted = false;
       try { counted = sessionStorage.getItem("lk_counted") === "1"; } catch (e) {}
-      if (lead && !counted) {
+      if (lead && saved && !counted) {
         LK.track("generate_lead", { package: lead.package, travel_month: lead.month });
         try { sessionStorage.setItem("lk_counted", "1"); } catch (e) {}
       }
@@ -78,11 +82,10 @@
         box.hidden = false;
         text = "Hi Lakut Kashmir! I just sent an enquiry.\nName: " + lead.name + "\nTravel month: " + lead.month + "\nTravellers: " + lead.travellers + "\nPackage: " + lead.package;
       }
-      var waOpened = false;
-      try { waOpened = sessionStorage.getItem("lk_wa_opened") === "1"; } catch (e) {}
-      if (waOpened) {
-        document.querySelector("[data-msg]").textContent = "Your enquiry is ready in WhatsApp — just press send and our Kashmir expert will reply with your plan and price.";
-        document.querySelector("[data-wa-label]").textContent = "Open WhatsApp again";
+      if (lead && !saved) {
+        // The enquiry could not be confirmed as saved: make WhatsApp the main step so it is not lost.
+        document.querySelector("[data-msg]").textContent = "One last step: tap the green button to send your enquiry on WhatsApp, and our Kashmir expert will reply with your plan and price.";
+        document.querySelector("[data-wa-label]").textContent = "Send my enquiry on WhatsApp";
       }
       var wa = document.querySelector("[data-wa]");
       wa.href = "https://wa.me/" + (C.whatsapp || "919541589391") + "?text=" + encodeURIComponent(text);
