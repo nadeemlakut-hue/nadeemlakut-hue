@@ -231,33 +231,37 @@
       Object.keys(a).forEach(function (k) { lead[k] = a[k]; });
       ss.set("lk_sent", "1");
       ss.set("lk_counted", "0");
-      ss.set("lk_wa_opened", "0");
+      ss.set("lk_saved", "0");
       ss.set("lk_lead", JSON.stringify({ name: lead.name, month: lead.month, travellers: lead.travellers, package: lead.package }));
 
-      // Bots fill the hidden field: pretend success, send nothing.
+      // Bots fill the hidden field: pretend success, send nothing, count nothing.
       if (f.company && f.company.value) { location.href = "thank-you.html"; return; }
 
-      var waText = "Hi Lakut Kashmir! I'd like a quote.\nName: " + lead.name + "\nTravel month: " + lead.month + "\nTravellers: " + lead.travellers + "\nPackage: " + lead.package;
       form.classList.add("is-sending");
       $("button[type=submit] span", form).textContent = "Sending…";
+      var go = function (saved) { ss.set("lk_saved", saved ? "1" : "0"); location.href = "thank-you.html"; };
+      if (!C.sheetUrl) return go(false);
 
-      if (!C.sheetUrl) {
-        // No Google Sheet connected yet: hand the enquiry to WhatsApp directly.
-        ss.set("lk_wa_opened", "1");
-        window.open(waLink(waText), "_blank", "noopener");
-        location.href = "thank-you.html";
-        return;
-      }
-      var done = function () { location.href = "thank-you.html"; };
-      var timer = setTimeout(done, 6000);
-      fetch(C.sheetUrl, { method: "POST", mode: "no-cors", body: new URLSearchParams(lead) })
-        .then(function () { clearTimeout(timer); done(); })
-        .catch(function () {
+      // Save the enquiry (Google Sheet + email to Cratio). Only a confirmed save counts as a Google Ads lead;
+      // if saving fails, the thank-you page asks the visitor to send the enquiry on WhatsApp instead.
+      var finished = false;
+      var fail = function () {
+        if (finished) return;
+        finished = true;
+        try { if (navigator.sendBeacon) navigator.sendBeacon(C.sheetUrl, new URLSearchParams(lead)); } catch (e2) {}
+        go(false);
+      };
+      var timer = setTimeout(fail, 15000);
+      fetch(C.sheetUrl, { method: "POST", body: new URLSearchParams(lead) })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (finished) return;
+          if (!(res && res.ok)) return fail();
+          finished = true;
           clearTimeout(timer);
-          ss.set("lk_wa_opened", "1");
-          window.open(waLink(waText), "_blank", "noopener");
-          done();
-        });
+          go(true);
+        })
+        .catch(function () { fail(); });
     });
   });
 
