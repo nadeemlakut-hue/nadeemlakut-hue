@@ -13,14 +13,14 @@ window.LAKUT = {
   phoneDisplay: "+91 91319 90355",
 
   // Google reviews (rating is shown only when filled in, e.g. "4.9").
-  googleRating: "",
+  googleRating: "4.7",
   googleReviewCount: 841,
   googlePlaceId: "ChIJUSAjZw4J4TgRH3Wl72_5TY4",
 
   // Tracking. Example: ga4 "G-XXXXXXX", adsId "AW-123456789", labels "AbCdEf123".
   ga4: "",
-  adsId: "",
-  adsLeadLabel: "",      // fired on thank-you.html after a form submit
+  adsId: "AW-11344635468",
+  adsLeadLabel: "wzszCN-b4ewcEMzMxaEq",      // "Submit lead form"; fired on thank-you.html only after the lead is saved
   adsWhatsappLabel: "",  // fired on WhatsApp button clicks
   adsCallLabel: "",      // fired on call button clicks
   metaPixel: ""
