@@ -70,6 +70,8 @@
       var counted = false;
       try { counted = sessionStorage.getItem("lk_counted") === "1"; } catch (e) {}
       if (lead && saved && !counted) {
+        // Enhanced conversions: Google hashes the number in the browser before sending it.
+        if (lead.phone) gtag("set", "user_data", { phone_number: lead.phone });
         LK.track("generate_lead", { package: lead.package, travel_month: lead.month });
         try { sessionStorage.setItem("lk_counted", "1"); } catch (e) {}
       }
