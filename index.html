@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="assets/img/sonamarg-1-sm.webp" media="(max-width: 760px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/sonamarg-1-m.webp" media="(max-width: 760px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/img/sonamarg-1.webp" media="(min-width: 761px)" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/style.css">
 
@@ -96,7 +96,7 @@
 
   <header class="nav" id="top">
     <div class="wrap nav__in">
-      <a class="nav__logo" href="#top" aria-label="Lakut Kashmir home"><img src="assets/img/logo.webp" alt="Lakut Kashmir" width="160" height="120"></a>
+      <a class="nav__logo" href="#top" aria-label="Lakut Kashmir home"><img src="assets/img/logo-sm.webp" srcset="assets/img/logo-sm.webp 160w, assets/img/logo.webp 320w" sizes="70px" alt="Lakut Kashmir" width="160" height="124"></a>
       <nav class="nav__links" aria-label="Sections">
         <a href="#packages">Packages</a>
         <a href="#journey">Itinerary</a>
@@ -112,7 +112,7 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__bg" aria-hidden="true">
-        <picture><source media="(max-width: 760px)" srcset="assets/img/sonamarg-1-sm.webp" width="640" height="402"><img class="hero__slide is-on" src="assets/img/sonamarg-1.webp" alt="" fetchpriority="high" width="1150" height="722"></picture>
+        <picture><source media="(max-width: 760px)" srcset="assets/img/sonamarg-1-m.webp" width="420" height="505"><img class="hero__slide is-on" src="assets/img/sonamarg-1.webp" alt="" fetchpriority="high" width="1150" height="722"></picture>
         <img class="hero__slide" data-src="assets/img/gulmarg-2.webp" alt="" width="1150" height="722">
         <img class="hero__slide" data-src="assets/img/houseboat-2.webp" alt="" width="690" height="433">
         <img class="hero__slide" data-src="assets/img/sonamarg-snow.webp" alt="" width="1150" height="722">
@@ -573,7 +573,7 @@
     </div>
   </div>
 
-  <script src="assets/js/track.js" defer></script>
+  <script src="assets/js/track.js" defer data-lazy-tags></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
