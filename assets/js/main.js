@@ -7,6 +7,8 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  // Heavy effects (slideshow, snowfall, scroll animations) run on desktop computers only, so phones load fast.
+  var fx = !reduced && matchMedia("(hover: hover) and (pointer: fine) and (min-width: 761px)").matches;
   var ss = {
     get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
@@ -82,7 +84,7 @@
 
   /* ---------- Hero slideshow ---------- */
   var slides = $$(".hero__slide");
-  if (slides.length > 1 && !reduced) {
+  if (slides.length > 1 && fx) {
     var cur = 0;
     var loadSlide = function (img) { if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute("data-src"); } };
     setTimeout(function () { slides.forEach(loadSlide); }, 1500);
@@ -98,7 +100,7 @@
 
   /* ---------- Snowfall ---------- */
   var canvas = $(".hero__snow");
-  if (canvas && !reduced) {
+  if (canvas && fx) {
     var ctx = canvas.getContext("2d");
     var flakes = [], W = 0, H = 0, running = true, raf;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -180,15 +182,7 @@
   document.addEventListener("mouseout", function (e) {
     if (!e.relatedTarget && e.clientY < 10 && canExit()) openModal("", "exit");
   });
-  if (!finePointer) {
-    var lastY = scrollY, lastT = Date.now();
-    addEventListener("scroll", function () {
-      var now = Date.now(), dy = scrollY - lastY, dt = now - lastT;
-      // A fast flick back up after reading half the page usually means "about to leave".
-      if (dy < -250 && dt < 300 && scrollY > document.body.scrollHeight * .35 && canExit()) openModal("", "exit");
-      lastY = scrollY; lastT = now;
-    }, { passive: true });
-  }
+  // No exit pop-up on phones: Google rates pop-ups that cover the page as a poor landing page experience.
 
   /* ---------- Lead forms ---------- */
   var cleanPhone = function (v) {
@@ -287,7 +281,7 @@
   /* ---------- GSAP animations ---------- */
   var startAnimations = function () {
     var root = document.documentElement;
-    if (!window.gsap || reduced) { root.classList.remove("anim"); return; }
+    if (!window.gsap || !fx) { root.classList.remove("anim"); return; }
     gsap.registerPlugin(ScrollTrigger);
 
     // Hero intro
@@ -379,7 +373,25 @@
       });
     }
   };
-  startAnimations();
+  // The animation library is downloaded on desktop computers only; phones skip it entirely.
+  var loadScript = function (src) {
+    return new Promise(function (ok, fail) {
+      var s = document.createElement("script");
+      s.src = src; s.onload = ok; s.onerror = fail;
+      document.head.appendChild(s);
+    });
+  };
+  if (fx) {
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js")
+      .then(function () { return loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"); })
+      .then(function () {
+        startAnimations();
+        if (document.readyState === "complete" && window.ScrollTrigger) ScrollTrigger.refresh();
+      })
+      .catch(function () { document.documentElement.classList.remove("anim"); });
+  } else {
+    startAnimations();
+  }
   // Lazy images change the page height as they load; re-measure scroll positions.
   addEventListener("load", function () { if (window.ScrollTrigger) ScrollTrigger.refresh(); });
 })();
