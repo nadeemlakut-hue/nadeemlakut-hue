@@ -497,4 +497,7 @@ body.modal-open { overflow: hidden; }
   /* Phones: no slow zoom on the hero photo and no snowfall (faster first paint). */
   .hero__slide.is-on { animation: none; transform: none; }
   .hero__snow { display: none; }
+
+  /* Phones: the phone's own font for body text (no 130 KB font download); headings keep Playfair. */
+  :root { --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 }
