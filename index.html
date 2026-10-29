@@ -20,7 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="assets/img/sonamarg-1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/sonamarg-1-sm.webp" media="(max-width: 760px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/sonamarg-1.webp" media="(min-width: 761px)" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script type="application/ld+json">
@@ -45,8 +46,8 @@
 
   <script src="assets/js/config.js" defer></script>
   <script>
-    // Hide scroll-reveal elements only when animations will run; show them again if GSAP fails to load.
-    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // Scroll animations run on desktop computers only (phones stay fast); show everything again if GSAP fails to load.
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches && matchMedia("(hover: hover) and (pointer: fine) and (min-width: 761px)").matches) {
       document.documentElement.classList.add("anim");
       setTimeout(function () { if (!window.gsap) document.documentElement.classList.remove("anim"); }, 3500);
     }
@@ -111,7 +112,7 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__bg" aria-hidden="true">
-        <img class="hero__slide is-on" src="assets/img/sonamarg-1.webp" alt="" fetchpriority="high" width="1150" height="722">
+        <picture><source media="(max-width: 760px)" srcset="assets/img/sonamarg-1-sm.webp" width="640" height="402"><img class="hero__slide is-on" src="assets/img/sonamarg-1.webp" alt="" fetchpriority="high" width="1150" height="722"></picture>
         <img class="hero__slide" data-src="assets/img/gulmarg-2.webp" alt="" width="1150" height="722">
         <img class="hero__slide" data-src="assets/img/houseboat-2.webp" alt="" width="690" height="433">
         <img class="hero__slide" data-src="assets/img/sonamarg-snow.webp" alt="" width="1150" height="722">
@@ -195,7 +196,7 @@
         <div class="pk-grid">
           <article class="pk" data-pkg="snow" data-tilt>
             <div class="pk__media">
-              <img src="assets/img/sonamarg-snow-sm.webp" srcset="assets/img/sonamarg-snow-sm.webp 640w, assets/img/sonamarg-snow.webp 1150w" sizes="(max-width: 760px) 92vw, 380px" alt="Snow-covered Sonmarg valley" loading="lazy" width="640" height="402">
+              <img src="assets/img/sonamarg-snow-sm.webp" srcset="assets/img/sonamarg-snow-sm.webp 640w, assets/img/sonamarg-snow.webp 1150w" sizes="(max-width: 760px) 340px, 380px" alt="Snow-covered Sonmarg valley" loading="lazy" width="640" height="402">
               <span class="pk__tag"><svg><use href="#i-snow"/></svg> Best for first-timers</span>
               <span class="pk__save">Save ₹3,000</span>
             </div>
@@ -221,7 +222,7 @@
           <article class="pk pk--hot" data-pkg="group" data-tilt>
             <div class="pk__ribbon">Most popular</div>
             <div class="pk__media">
-              <img src="assets/img/doodhpathri-1-sm.webp" srcset="assets/img/doodhpathri-1-sm.webp 640w, assets/img/doodhpathri-1.webp 1150w" sizes="(max-width: 760px) 92vw, 380px" alt="Green meadows of Doodhpathri" loading="lazy" width="640" height="402">
+              <img src="assets/img/doodhpathri-1-sm.webp" srcset="assets/img/doodhpathri-1-sm.webp 640w, assets/img/doodhpathri-1.webp 1150w" sizes="(max-width: 760px) 340px, 380px" alt="Green meadows of Doodhpathri" loading="lazy" width="640" height="402">
               <span class="pk__tag"><svg><use href="#i-users"/></svg> Best for families &amp; groups</span>
               <span class="pk__save">Save ₹5,000</span>
             </div>
@@ -246,7 +247,7 @@
 
           <article class="pk" data-pkg="honeymoon" data-tilt>
             <div class="pk__media">
-              <img src="assets/img/srinagar-autumn-sm.webp" srcset="assets/img/srinagar-autumn-sm.webp 640w, assets/img/srinagar-autumn.webp 1150w" sizes="(max-width: 760px) 92vw, 380px" alt="Shikara on a calm Dal Lake under chinar leaves" loading="lazy" width="640" height="402">
+              <img src="assets/img/srinagar-autumn-sm.webp" srcset="assets/img/srinagar-autumn-sm.webp 640w, assets/img/srinagar-autumn.webp 1150w" sizes="(max-width: 760px) 340px, 380px" alt="Shikara on a calm Dal Lake under chinar leaves" loading="lazy" width="640" height="402">
               <span class="pk__tag"><svg><use href="#i-heart"/></svg> Best for couples</span>
               <span class="pk__save">Save ₹6,239</span>
             </div>
@@ -470,7 +471,7 @@
 
     <!-- FINAL CTA -->
     <section class="final" id="enquire" aria-labelledby="fn-title">
-      <div class="final__bg" aria-hidden="true"><img src="assets/img/houseboat-1.webp" alt="" loading="lazy" width="1150" height="722"></div>
+      <div class="final__bg" aria-hidden="true"><img src="assets/img/houseboat-1.webp" srcset="assets/img/houseboat-1-sm.webp 640w, assets/img/houseboat-1.webp 1150w" sizes="(max-width: 760px) 360px, 100vw" alt="" loading="lazy" width="1150" height="722"></div>
       <div class="wrap final__grid">
         <div class="final__copy" data-reveal>
           <p class="eyebrow eyebrow--light">Your houseboat is waiting</p>
@@ -572,8 +573,6 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="assets/js/track.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
