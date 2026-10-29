@@ -373,17 +373,9 @@
       });
     }
   };
-  // The animation library is downloaded on desktop computers only; phones skip it entirely.
-  var loadScript = function (src) {
-    return new Promise(function (ok, fail) {
-      var s = document.createElement("script");
-      s.src = src; s.onload = ok; s.onerror = fail;
-      document.head.appendChild(s);
-    });
-  };
-  if (fx) {
-    loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js")
-      .then(function () { return loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"); })
+  // The animation library is downloaded on desktop computers only (started in the page head); phones skip it.
+  if (fx && window.lkGsap) {
+    window.lkGsap
       .then(function () {
         startAnimations();
         if (document.readyState === "complete" && window.ScrollTrigger) ScrollTrigger.refresh();
