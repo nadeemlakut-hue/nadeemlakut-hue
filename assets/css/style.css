@@ -1,4 +1,13 @@
 /* Lakut Kashmir landing page — brand: forest green, saffron, cream, sky blue */
+/* Fallback fonts sized to match Inter and Playfair Display (measured), so nothing jumps when the
+   Google fonts arrive: Arial / Times New Roman on Windows and Mac, Liberation fonts on Linux. */
+@font-face { font-family: "Inter Fallback"; src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("LiberationSans"); font-weight: 100 500; size-adjust: 105.63%; ascent-override: 91.74%; descent-override: 22.82%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("LiberationSans-Bold"); font-weight: 600; size-adjust: 100.29%; ascent-override: 96.62%; descent-override: 24.03%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("LiberationSans-Bold"); font-weight: 700; size-adjust: 101.01%; ascent-override: 95.93%; descent-override: 23.86%; line-gap-override: 0%; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("LiberationSans-Bold"); font-weight: 800 900; size-adjust: 101.89%; ascent-override: 95.10%; descent-override: 23.65%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Fallback"; src: local("Times New Roman Bold"), local("TimesNewRomanPS-BoldMT"), local("Liberation Serif Bold"), local("LiberationSerif-Bold"); font-weight: 400 900; size-adjust: 105.72%; ascent-override: 102.35%; descent-override: 23.74%; line-gap-override: 0%; }
+@font-face { font-family: "Playfair Fallback"; src: local("Times New Roman Bold Italic"), local("TimesNewRomanPS-BoldItalicMT"), local("Liberation Serif Bold Italic"), local("LiberationSerif-BoldItalic"); font-weight: 400 900; font-style: italic; size-adjust: 108.15%; ascent-override: 100.05%; descent-override: 23.21%; line-gap-override: 0%; }
+
 :root {
   --forest-900: #0b1a14;
   --forest: #122620;
@@ -17,8 +26,8 @@
   --wa: #25d366;
   --wa-d: #1aa851;
 
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: "Playfair Display", "Playfair Fallback", Georgia, serif;
+  --sans: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --r-sm: 10px;
   --r: 18px;
