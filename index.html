@@ -49,6 +49,16 @@
     // Scroll animations run on desktop computers only (phones stay fast); show everything again if GSAP fails to load.
     if (!matchMedia("(prefers-reduced-motion: reduce)").matches && matchMedia("(hover: hover) and (pointer: fine) and (min-width: 761px)").matches) {
       document.documentElement.classList.add("anim");
+      // Desktop: start downloading the animation library right away (phones never download it).
+      window.lkGsap = Promise.all(["gsap.min.js", "ScrollTrigger.min.js"].map(function (f) {
+        return new Promise(function (ok, fail) {
+          var s = document.createElement("script");
+          s.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/" + f;
+          s.async = false; s.onload = ok; s.onerror = fail;
+          document.head.appendChild(s);
+        });
+      }));
+      window.lkGsap.catch(function () {});
       setTimeout(function () { if (!window.gsap) document.documentElement.classList.remove("anim"); }, 3500);
     }
   </script>
