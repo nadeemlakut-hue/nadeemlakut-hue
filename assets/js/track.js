@@ -23,13 +23,31 @@
   window.gtag = window.gtag || function () { (window.dataLayer = window.dataLayer || []).push(arguments); };
   var tagId = C.ga4 || C.adsId;
   if (tagId) {
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(tagId);
-    document.head.appendChild(s);
     gtag("js", new Date());
     if (C.ga4) gtag("config", C.ga4);
     if (C.adsId) gtag("config", C.adsId);
+    var addTag = function () {
+      if (addTag.done) return;
+      addTag.done = true;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(tagId);
+      document.head.appendChild(s);
+    };
+    var me = document.currentScript;
+    if (me && me.hasAttribute("data-lazy-tags")) {
+      // Landing page: let the photo, text and form load first. The Google tag (160 KB) loads at the
+      // visitor's first touch, scroll, key press or mouse move, or 4 seconds after the page has loaded,
+      // whichever comes first. Commands above wait in the queue, so the ad click (gclid) is still recorded
+      // long before anyone can fill in the form.
+      ["pointerdown", "touchstart", "scroll", "keydown", "mousemove"].forEach(function (e) {
+        addEventListener(e, addTag, { once: true, passive: true });
+      });
+      var later = function () { setTimeout(addTag, 4000); };
+      if (document.readyState === "complete") later(); else addEventListener("load", later);
+    } else {
+      addTag();
+    }
   }
 
   if (C.metaPixel) {
