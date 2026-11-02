@@ -45,10 +45,10 @@
       <a class="ty__logo" href="index.html"><img src="assets/img/logo.webp" alt="Lakut Kashmir" width="160" height="120"></a>
       <div class="ty__tick"><svg><use href="#i-check"/></svg></div>
       <h1>Thank you<span data-name></span>! <em>Kashmir awaits.</em></h1>
-      <p data-msg>Our Kashmir expert will contact you on WhatsApp shortly with your day-wise plan, hotels and price.</p>
+      <p data-msg>Our Kashmir expert will contact you on WhatsApp shortly with your day-wise plan and hotels.</p>
       <div class="ty__summary" data-summary hidden></div>
       <div class="ty__ctas">
-        <a class="btn btn--wa btn--lg" data-wa href="https://wa.me/919541589391" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> <span data-wa-label>Get a faster reply on WhatsApp</span></a>
+        <a class="btn btn--wa btn--lg" data-wa href="https://wa.me/919906794999" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> <span data-wa-label>Get a faster reply on WhatsApp</span></a>
         <a class="btn btn--ghost btn--lg" href="https://youtube.com/@lakutkashmir" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg> Watch guest videos</a>
       </div>
     </div>
@@ -86,11 +86,11 @@
       }
       if (lead && !saved) {
         // The enquiry could not be confirmed as saved: make WhatsApp the main step so it is not lost.
-        document.querySelector("[data-msg]").textContent = "One last step: tap the green button to send your enquiry on WhatsApp, and our Kashmir expert will reply with your plan and price.";
+        document.querySelector("[data-msg]").textContent = "One last step: tap the green button to send your enquiry on WhatsApp, and our Kashmir expert will reply with your plan.";
         document.querySelector("[data-wa-label]").textContent = "Send my enquiry on WhatsApp";
       }
       var wa = document.querySelector("[data-wa]");
-      wa.href = "https://wa.me/" + (C.whatsapp || "919541589391") + "?text=" + encodeURIComponent(text);
+      wa.href = "https://wa.me/" + (C.whatsapp || "919906794999") + "?text=" + encodeURIComponent(text);
       wa.addEventListener("click", function () { LK.track("whatsapp_click", { location: "thank_you" }); });
 
       // Confetti in brand colours
