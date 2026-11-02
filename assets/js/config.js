@@ -8,7 +8,7 @@ window.LAKUT = {
   sheetUrl: "https://script.google.com/macros/s/AKfycbxJVol83ZQLP0yKupNHMmYbOpBq6fKW__kk4ny6ELiVHY_KeJcrV5Tlo0AAfYBivDae1A/exec",
 
   // Contact numbers (digits only for WhatsApp, with country code).
-  whatsapp: "919541589391",
+  whatsapp: "919906794999",
   phone: "+919131990355",
   phoneDisplay: "+91 91319 90355",
 
