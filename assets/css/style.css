@@ -440,7 +440,10 @@ body.modal-open { overflow: hidden; }
   .modal__art { min-height: 120px; }
   .modal__form { padding: 22px 20px 24px; }
   .foot__grid { grid-template-columns: 1fr; }
-  .fab-wa { display: none; }
+  .fab-wa { width: 54px; height: 54px; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); transition: opacity .3s, transform .3s var(--ease); }
+  .fab-wa svg { width: 28px; height: 28px; }
+  .fab-wa__tip { display: none; }
+  body.mbar-on .fab-wa { opacity: 0; transform: scale(.6); pointer-events: none; }
   .mbar {
     display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px;
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
