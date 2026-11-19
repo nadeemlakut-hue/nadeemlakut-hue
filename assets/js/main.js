@@ -142,7 +142,11 @@
   var onScroll = function () {
     var y = scrollY;
     nav.classList.toggle("is-solid", y > 60);
-    if (mbar) mbar.classList.toggle("is-on", y > hero.offsetHeight * .6);
+    if (mbar) {
+      var on = y > hero.offsetHeight * .6;
+      mbar.classList.toggle("is-on", on);
+      document.body.classList.toggle("mbar-on", on);   // phones: the round WhatsApp button hands over to the bar
+    }
   };
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();

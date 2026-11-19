@@ -43,8 +43,12 @@
       ["pointerdown", "touchstart", "scroll", "keydown", "mousemove"].forEach(function (e) {
         addEventListener(e, addTag, { once: true, passive: true });
       });
+      // Phones: no timer. Anyone who fills the form touches the screen first, so the click is still recorded,
+      // and the phone's main thread stays free while the page settles (Google's speed test counted 1.8 s of blocking).
       var later = function () { setTimeout(addTag, 4000); };
-      if (document.readyState === "complete") later(); else addEventListener("load", later);
+      if (!matchMedia("(pointer: coarse)").matches) {
+        if (document.readyState === "complete") later(); else addEventListener("load", later);
+      }
     } else {
       addTag();
     }
